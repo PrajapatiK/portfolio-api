@@ -1,0 +1,12 @@
+node_modules/
+bscredentials/
+.tmp/
+.eslintcache
+bower_components/
+config/development.json
+.env*
+config/config.env*
+local.env
+intg.env
+local.env
+.envdocker
