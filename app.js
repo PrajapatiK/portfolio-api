@@ -41,6 +41,10 @@ app.use(morgan('common', {
   stream: fs.createWriteStream(path.join(__dirname, 'reqAccessLogs.log'), { flags: 'a' })
 }))
 
+app.get('/', (_, res) => {
+  res.send('Portfolio API up and running...');
+});
+
 app.use('/api/v1/portfolio', portfolioRoute);
 
 /* if (process.env.NODE_ENV === 'PRODUCTION') {

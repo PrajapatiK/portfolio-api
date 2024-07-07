@@ -10,3 +10,4 @@ local.env
 intg.env
 local.env
 .envdocker
+*.log
