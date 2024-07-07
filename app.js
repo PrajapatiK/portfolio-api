@@ -43,12 +43,12 @@ app.use(morgan('common', {
 
 app.use('/api/v1/portfolio', portfolioRoute);
 
-if (process.env.NODE_ENV === 'PRODUCTION') {
+/* if (process.env.NODE_ENV === 'PRODUCTION') {
   app.use(express.static(path.join(__dirname, 'webs/build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'webs/build/index.html'));
   });
-}
+} */
 
 // Middleware for Errors
 app.use(errorMiddleware);
