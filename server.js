@@ -1,4 +1,5 @@
-require('dotenv').config({ path: "apis/config/config.env" });
+// require('dotenv').config({ path: "apis/config/config.env" });
+require('dotenv').config();
 const app = require("./app");
 const { AppEventBus } = require('./lib/appEvents/appEventsEmitter');
 const appEventsConst = require('./lib/appEvents/appEventsConst');
