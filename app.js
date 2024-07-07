@@ -11,7 +11,7 @@ const portfolioRoute = require('./routes/portfolioRoute');
 
 const app = express();
 
-var allowedOrigins = ['http://localhost:3000'];
+var allowedOrigins = ['http://localhost:3000', 'https://portfolio-web-5z0z.onrender.com'];
 let corsOpts
 if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefined)) {
   corsOpts = {
