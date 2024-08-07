@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const morgan = require('morgan');
+const cookieParser = require("cookie-parser");
 
 // const cookieParser = require("cookie-parser");
 const errorMiddleware = require('./middleware/error');
@@ -11,14 +12,16 @@ const portfolioRoute = require('./routes/portfolioRoute');
 
 const app = express();
 
-var allowedOrigins = ['http://localhost:3000', 'https://portfolio-web-5z0z.onrender.com'];
+var allowedOrigins = [];
 let corsOpts
 if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefined)) {
+  allowedOrigins.push('http://localhost:3000');
   corsOpts = {
     origin: true,
     credentials: true,
   }
 } else {
+  allowedOrigins.push('https://portfolio-web-5z0z.onrender.com');
   corsOpts = {
     origin: function (origin, callback) {
       // (like mobile apps or curl requests)
@@ -35,6 +38,7 @@ app.use(express.json());
 // app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors(corsOpts))
+app.use(cookieParser());
 app.use(morgan('dev'))
 // log all requests to reqAccessLogs.log
 app.use(morgan('common', {
