@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { generateToken } = require('../helpers/jwtHelper');
 
 const userSchema = new mongoose.Schema({
   userId: {
@@ -22,9 +23,18 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    default: 'User'
+    default: 'User',
+    enum: ["User", "Admin"],
   },
-})
+  status: {
+    type: String,
+    required: true,
+    default: 'Inactive',
+    enum: ["Inactive", "Active"],
+  },
+  verifySignupToken: String,
+  resetPasswordToken: String,
+}, { timestamps: true })
 
 userSchema.pre('save', async function (next) {
   try {
@@ -53,6 +63,21 @@ userSchema.methods.isValidPassword = async function (password) {
     throw error
   }
 }
+
+// Generating Password Reset Token
+userSchema.methods.getResetPasswordToken = async function (user) {
+  // Generating Token
+  const resetToken = await generateToken(user)
+  // const resetToken = crypto.randomBytes(20).toString("hex");
+  // // Hashing and adding resetPasswordToken to userSchema
+  // this.resetPasswordToken = crypto
+  //   .createHash("sha256")
+  //   .update(resetToken)
+  //   .digest("hex");
+  // this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  this.resetPasswordToken = resetToken;
+  return resetToken;
+};
 
 module.exports = {
   User: mongoose.model('user', userSchema),

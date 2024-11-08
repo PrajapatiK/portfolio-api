@@ -26,7 +26,7 @@ const introSchema = new mongoose.Schema({
     type: String,
     required: true,
   }
-})
+}, { timestamps: true })
 
 const aboutSchema = new mongoose.Schema({
   userId: {
@@ -51,7 +51,7 @@ const aboutSchema = new mongoose.Schema({
     required: true,
     default: [],
   }
-})
+}, { timestamps: true })
 
 const experienceSchema = new mongoose.Schema({
   userId: {
@@ -65,23 +65,7 @@ const experienceSchema = new mongoose.Schema({
     company: String,
     description: String,
   }],
-/*   title: {
-    type: String,
-    required: true,
-  },
-  period: {
-    type: String,
-    required: true,
-  },
-  company: {
-    type: String,
-    required: true,
-  },
-  dexcription: {
-    type: String,
-    required: true
-  } */
-})
+}, { timestamps: true })
 
 const projectSchema = new mongoose.Schema({
   userId: {
@@ -97,27 +81,7 @@ const projectSchema = new mongoose.Schema({
     link: String,
     technologies: Array,
   }],
-/*   title: {
-    type: String,
-    required: true,
-  },
-  dexcription: {
-    type: String,
-    required: true
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  link: {
-    type: String,
-    required: true,
-  },
-  technologies: {
-    type: Array,
-    required: true,
-  }, */
-})
+}, { timestamps: true })
 
 const contactSchema = new mongoose.Schema({
   userId: {
@@ -149,7 +113,7 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+}, { timestamps: true });
 
 const socialSchema = new mongoose.Schema({
   userId: {
@@ -177,7 +141,7 @@ const socialSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-})
+}, { timestamps: true })
 
 
 module.exports = {

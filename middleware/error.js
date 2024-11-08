@@ -2,7 +2,7 @@ const ErrorHandler = require("../common/errors/errorHandler");
 const { errorRes } = require("../util");
 
 module.exports = (err, req, res, next) => {
-  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 500;
   err.message = err.message || "Internal Server Error";
 
   // Wrong MongoDB ID error
@@ -30,5 +30,5 @@ module.exports = (err, req, res, next) => {
   }
   console.log('err:::::::::');
   console.log(err);
-  res.status(err.statusCode).json(errorRes(err, err.message));
+  res.status(err.status).json(errorRes(err, err.message));
 };
