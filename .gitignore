@@ -11,3 +11,4 @@ intg.env
 local.env
 .envdocker
 *.log
+.vercel
