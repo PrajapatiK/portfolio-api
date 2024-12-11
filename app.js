@@ -41,9 +41,9 @@ app.use(cors(corsOpts))
 app.use(cookieParser());
 app.use(morgan('dev'))
 // log all requests to reqAccessLogs.log
-app.use(morgan('common', {
+/* app.use(morgan('common', {
   stream: fs.createWriteStream(path.join(__dirname, 'reqAccessLogs.log'), { flags: 'a' })
-}))
+})) */
 
 app.get('/', (_, res) => {
   res.send('Portfolio API up and running...');
