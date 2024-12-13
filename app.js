@@ -15,13 +15,13 @@ const app = express();
 var allowedOrigins = [];
 let corsOpts
 if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefined)) {
-  allowedOrigins.push('http://localhost:3000');
+  allowedOrigins.push(process.env.WEBAPP_BASEURL);
   corsOpts = {
     origin: true,
     credentials: true,
   }
 } else {
-  allowedOrigins.push('https://portfolio-web-5z0z.onrender.com', 'https://portfolio-api-seven-hazel.vercel.app');
+  allowedOrigins.push('https://portfolio-api-seven-hazel.vercel.app');
   corsOpts = {
     origin: function (origin, callback) {
       // (like mobile apps or curl requests)
