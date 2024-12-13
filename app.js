@@ -21,7 +21,8 @@ if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefine
     credentials: true,
   }
 } else {
-  allowedOrigins.push('https://portfolio-api-seven-hazel.vercel.app');
+  console.log('Production logging...');
+  allowedOrigins.push(process.env.WEBAPP_BASEURL, 'https://portfolio-api-seven-hazel.vercel.app');
   corsOpts = {
     origin: function (origin, callback) {
       // (like mobile apps or curl requests)
