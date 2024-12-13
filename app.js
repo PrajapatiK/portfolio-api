@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefine
     credentials: true,
   }
 } else {
-  allowedOrigins.push('https://portfolio-web-5z0z.onrender.com');
+  allowedOrigins.push('https://portfolio-web-5z0z.onrender.com', 'https://portfolio-api-seven-hazel.vercel.app');
   corsOpts = {
     origin: function (origin, callback) {
       // (like mobile apps or curl requests)
