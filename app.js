@@ -13,14 +13,16 @@ const portfolioRoute = require('./routes/portfolioRoute');
 const app = express();
 
 var allowedOrigins = [];
-let corsOpts
+let corsOpts = {};
+console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefined)) {
   allowedOrigins.push(process.env.WEBAPP_BASEURL);
   corsOpts = {
     origin: true,
     credentials: true,
   }
-} else {
+} /* else {
   console.log('Production logging...');
   allowedOrigins.push(process.env.WEBAPP_BASEURL, 'https://portfolio-api-seven-hazel.vercel.app');
   console.log(allowedOrigins);
@@ -35,7 +37,7 @@ if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefine
       return callback(null, true);
     }
   }
-}
+} */
 
 app.use(express.json());
 // app.use(cookieParser());
