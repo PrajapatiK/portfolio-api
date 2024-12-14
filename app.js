@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefine
     credentials: true,
   }
 } else {
-  allowedOrigins.push('https://portfolio-api-seven-hazel.vercel.app');
+  allowedOrigins.push('*');
   corsOpts = {
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
