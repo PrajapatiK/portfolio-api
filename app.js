@@ -15,14 +15,25 @@ const app = express();
 var allowedOrigins = [];
 let corsOpts = {};
 console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
-
+allowedOrigins.push(process.env.WEBAPP_BASEURL);
 if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefined)) {
-  allowedOrigins.push(process.env.WEBAPP_BASEURL);
   corsOpts = {
     origin: true,
     credentials: true,
   }
-} /* else {
+} else {
+  allowedOrigins.push('https://portfolio-api-seven-hazel.vercel.app');
+  corsOpts = {
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+};
+} 
+/* else {
   console.log('Production logging...');
   allowedOrigins.push(process.env.WEBAPP_BASEURL, 'https://portfolio-api-seven-hazel.vercel.app');
   console.log(allowedOrigins);
