@@ -22,15 +22,8 @@ if (process.env.NODE_ENV === 'DEVELOPMENT' || (process.env.NODE_ENV === undefine
     credentials: true,
   }
 } else {
-  allowedOrigins.push('*');
   corsOpts = {
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 };
