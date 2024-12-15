@@ -47,6 +47,8 @@ app.use(express.json());
 // app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors(corsOpts))
+// Handle preflight requests
+app.options('*', cors());
 app.use(cookieParser());
 app.use(morgan('dev'))
 // log all requests to reqAccessLogs.log
